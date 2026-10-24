@@ -106,6 +106,7 @@ class EngineProcess:
         with self.lock:
             self.proc = proc
             self.pid = proc.pid
+            self.child_pid = None  # set again by the new engine's "ready" line
             self.online = True
             self.latest_snapshot = None
         threading.Thread(target=self._read_loop, args=(proc,), daemon=True).start()
