@@ -12,7 +12,7 @@ services:
     envVars:
       # Browser origins allowed to call the bridge (comma-separated, * wildcard allowed).
       - key: TARMAC_ALLOWED_ORIGINS
-        value: https://tarmacos.vercel.app
+        value: https://tarmacos-kohl.vercel.app,https://tarmacos-zimran2.vercel.app,https://tarmacos-*-zimran2.vercel.app
       - key: TARMAC_MAX_SESSIONS
         value: "12"
       - key: TARMAC_MAX_SESSIONS_PER_IP
