@@ -59,11 +59,30 @@ export const command = (line) => post("/api/cmd", { line });
 export const sys = (name) => post("/api/sys", { cmd: name });
 export const restartEngine = () => post("/api/engine/restart", {});
 
+// The bridge sends at least a "ping" every 15 s. If nothing arrives for 40 s the connection
+// is dead without having been closed (network drop, frozen server): reconnect ourselves.
+const SILENCE_MS = 40000;
+
 export function connect({ onSnapshot, onEngine, onConnection }) {
-  const source = new EventSource(url("/api/stream"));
-  source.addEventListener("snapshot", (e) => onSnapshot(JSON.parse(e.data)));
-  source.addEventListener("engine", (e) => onEngine(JSON.parse(e.data)));
-  source.onopen = () => onConnection(true);
-  source.onerror = () => onConnection(false); // EventSource reconnects by itself
-  return source;
+  let source = null;
+  let lastEvent = Date.now();
+  let closed = false;
+  const seen = () => { lastEvent = Date.now(); };
+  const open = () => {
+    source = new EventSource(url("/api/stream"));
+    source.addEventListener("snapshot", (e) => { seen(); onSnapshot(JSON.parse(e.data)); });
+    source.addEventListener("engine", (e) => { seen(); onEngine(JSON.parse(e.data)); });
+    source.addEventListener("ping", seen);
+    source.onopen = () => { seen(); onConnection(true); };
+    source.onerror = () => onConnection(false); // EventSource reconnects by itself
+  };
+  const watchdog = setInterval(() => {
+    if (closed || Date.now() - lastEvent < SILENCE_MS) return;
+    onConnection(false);
+    source.close();
+    seen();
+    open();
+  }, 5000);
+  open();
+  return { close: () => { closed = true; clearInterval(watchdog); source.close(); } };
 }

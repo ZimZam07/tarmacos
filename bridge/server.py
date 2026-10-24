@@ -468,8 +468,9 @@ class Handler(BaseHTTPRequestHandler):
                             return
                     time.sleep(0.1)
                 except queue.Empty:
-                    self.wfile.write(b": keep-alive\n\n")
-                    self.wfile.flush()
+                    # A named event (not an SSE comment) so the dashboard can see it and
+                    # detect a silently dead connection.
+                    self.write_event("ping", "{}")
                     engine.last_seen = time.time()
         except (BrokenPipeError, ConnectionResetError, OSError):
             pass
