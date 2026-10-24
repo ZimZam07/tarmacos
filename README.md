@@ -25,6 +25,8 @@ cart's route over pipes**. Every value on the dashboard comes from a C++ engine 
 
 See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for how the pieces fit together.
 
+**Live demo:** https://tarmacos-kohl.vercel.app (dashboard on Vercel, engine and bridge on Render; each visitor gets their own engine). How it is deployed and updated: [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md).
+
 ## Prerequisites
 
 Linux, or **WSL2** on Windows (the engine is POSIX code and does not run natively on Windows), with:
@@ -74,7 +76,7 @@ Then open **http://127.0.0.1:8080** in a browser. On Windows, use `127.0.0.1` ra
 |---|---|---|
 | `make -C engine test` | 31 unit tests: scheduling, Banker's, detection, FIFO, disk, protocol | 105 checks, 0 failures |
 | `make -C engine golden` | live engine: every reference case, the 4 deadlock policies, determinism (10 runs), real PIDs/pipes/threads, reset ×50, bounded buffer blocking, error codes, killed child | 74 checks, 0 failures |
-| `python3 -m unittest bridge/test_bridge.py` | HTTP API, SSE, sys commands, path traversal, engine offline + restart | 7 tests OK |
+| `python3 -m unittest bridge/test_bridge.py` | HTTP API, SSE, sys commands, path traversal, engine offline + restart; public mode: per-session isolation, caps, CORS, idle clean-up | 13 tests OK |
 
 ## Limitations and provisional choices
 
@@ -88,6 +90,6 @@ Then open **http://127.0.0.1:8080** in a browser. On Windows, use `127.0.0.1` ra
 - Time is in discrete ticks. Threads run concurrently and block for real, but all decisions are applied at the end of each tick in a fixed order, so every run of a scenario is identical.
 - The baggage cart serves one batch at a time: requests that arrive during a batch wait for the next one.
 - Memory and disk are simulations of the algorithms; no real memory or disk is managed.
-- Single-user local application: no authentication, persistence or remote access (the bridge binds to 127.0.0.1).
+- Locally, one shared engine with no authentication or persistence (the bridge binds to 127.0.0.1). The hosted copy runs the bridge in public mode, with one engine per browser session, and still has no login or persistence: see [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md).
 
 Further reading: [docs/OS_CONCEPTS.md](docs/OS_CONCEPTS.md) · [docs/ALGORITHMS.md](docs/ALGORITHMS.md) · [docs/VIVA.md](docs/VIVA.md) · planning documents in `../tarmacos_blueprint/`.

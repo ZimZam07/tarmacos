@@ -15,6 +15,8 @@
                                                                         └──────────────────────────────────────┘
 ```
 
+In public mode (`TARMAC_PUBLIC=1`, the hosted copy) the bridge runs one such engine per browser session (`?sid=`); see [DEPLOYMENT.md](DEPLOYMENT.md).
+
 The bridge↔engine pipes are only **transport**. The course-relevant IPC demonstration is the engine↔child exchange, which is genuine `fork`/`pipe`/`read`/`write`/`waitpid` code in `engine/src/baggage_ipc.cpp`.
 
 ## Engine source map (`engine/src/`)
@@ -77,6 +79,6 @@ The threads really run in parallel and really block (`pthread_cond_wait`, `sem_w
 - **Responses:**
   - `{"type":"resp","id":"7","ok":true,"result":{…}}`
   - `{"type":"resp","id":"7","ok":false,"error":{"code":"E_BAD_ARG","msg":"…"}}`
-- **Error codes:** `E_PARSE`, `E_UNKNOWN_CMD`, `E_BAD_ARG`, `E_UNKNOWN_FLIGHT`, `E_DUPLICATE_FLIGHT`, `E_FLIGHT_DONE`, `E_BUSY`, `E_STATE`, `E_LIMIT`, `E_IPC`, `E_INTERNAL`. The bridge adds `E_ENGINE_OFFLINE`, `E_TIMEOUT` and `E_BAD_REQUEST`.
+- **Error codes:** `E_PARSE`, `E_UNKNOWN_CMD`, `E_BAD_ARG`, `E_UNKNOWN_FLIGHT`, `E_DUPLICATE_FLIGHT`, `E_FLIGHT_DONE`, `E_BUSY`, `E_STATE`, `E_LIMIT`, `E_IPC`, `E_INTERNAL`. The bridge adds `E_ENGINE_OFFLINE`, `E_TIMEOUT` and `E_BAD_REQUEST`, and in public mode `E_CAPACITY`, `E_SESSION_EXPIRED` and `E_RATE_LIMIT`.
 - **Events:** `{"type":"event","epoch":…,"seq":…,"tick":…,"kind":"RES_GRANTED","msg":"…","data":{…}}`
 - **Snapshots:** `{"type":"snapshot", "sim", "cpu", "flights", "resources", "pending", "deadlock", "memory", "disk", "sync", "ipc", "threads", "events"}`. The UI ignores snapshots older than the one it holds, using `epoch` and `version`.
