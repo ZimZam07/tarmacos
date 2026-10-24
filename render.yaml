@@ -9,6 +9,14 @@ services:
     dockerfilePath: ./Dockerfile
     healthCheckPath: /api/health
     autoDeploy: true
+    # Rebuild (and restart every running simulation) only when the backend changes.
+    # Dashboard-only and docs-only commits do not touch Render.
+    buildFilter:
+      paths:
+        - engine/**
+        - bridge/**
+        - Dockerfile
+        - .dockerignore
     envVars:
       # Browser origins allowed to call the bridge (comma-separated, * wildcard allowed).
       - key: TARMAC_ALLOWED_ORIGINS

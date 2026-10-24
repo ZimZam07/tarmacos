@@ -67,7 +67,7 @@ There are no secrets anywhere in this deployment.
 |---|---|
 | **Update the dashboard** | commit, then `./scripts/deploy_web.sh --prod` (Git Bash or WSL, from `tarmacos/`) |
 | Try a dashboard change first | `./scripts/deploy_web.sh` (preview URL; previews are behind Vercel login by default) |
-| **Update the engine or bridge** | commit and `git push` — Render rebuilds automatically (≈5–10 min; the build runs the unit and golden tests and refuses to deploy if they fail) |
+| **Update the engine or bridge** | commit and `git push` — Render rebuilds automatically (≈5–10 min; the build runs the unit and golden tests and refuses to deploy if they fail). Only changes under `engine/`, `bridge/` or to the `Dockerfile` trigger a rebuild (`buildFilter` in `render.yaml`), because a backend restart ends every visitor's running simulation |
 | **Check backend health** | open https://tarmacos-bridge.onrender.com/api/health → `{"ok": true, "sessions": N, "max_sessions": 12}` |
 | **View backend logs** | Render dashboard → `tarmacos-bridge` → *Logs* (session start/stop lines, engine exits) |
 | View dashboard logs | Vercel dashboard → `tarmacos` → *Deployments* (build logs; there is no server code) |
@@ -94,6 +94,10 @@ then `npx vercel link --yes --project tarmacos` there) and copy its `.vercel/pro
 - Render Free: 0.1 CPU, 512 MB RAM, 750 instance-hours per month (enough for one always-on service),
   and Render may restart free services at any time. Each engine uses about 5 MB and no CPU while paused.
 - Long SSE connections may be cut by the proxy (~100 minutes); the browser reconnects automatically.
+- If the backend restarts (deploy, sleep, Render maintenance) the dashboard reconnects by itself and
+  shows a notice that a new engine started; the previous simulation is gone.
+- The bridge also serves a copy of the dashboard at the Render URL. Share the Vercel URL: that copy
+  is only refreshed on backend rebuilds.
 - Vercel Hobby is for non-commercial use; this static site uses a tiny fraction of its limits.
 - No paid features are used. Upgrading Render to *Starter* (paid) would remove sleeping.
 

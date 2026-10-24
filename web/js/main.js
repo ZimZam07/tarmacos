@@ -169,6 +169,7 @@ function renderOffline() {
   };
   const fresh = document.getElementById("btn-new-session");
   if (fresh) fresh.onclick = () => {
+    lastOnlinePid = null;
     renewSession();
     openStream();
   };
@@ -220,12 +221,18 @@ wireControls();
 subscribe(render);
 window.addEventListener("hashchange", () => show(location.hash.slice(1)));
 let source = null;
+let lastOnlinePid = null; // to tell the user when a restart replaced their engine
 function openStream() {
   if (source) source.close();
   source = connect({
     onSnapshot: acceptSnapshot,
     onEngine: (status) => {
       if (status.engine_pid !== store.engine.engine_pid) store.snap = null; // a new engine process
+      if (status.online) {
+        if (lastOnlinePid !== null && status.engine_pid !== lastOnlinePid)
+          toast("A new engine process started, so the simulation is back at the empty apron.", true);
+        lastOnlinePid = status.engine_pid;
+      }
       if (status.error === "E_SESSION_EXPIRED") source.close(); // do not silently start a new one
       setEngine(status);
     },
