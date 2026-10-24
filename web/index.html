@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TarmacOS · Ground &amp; Gate Ops Control</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230a111e'/%3E%3Crect x='13' y='3' width='6' height='26' rx='1' fill='%23152139' stroke='%23f0b43c'/%3E%3Cpath d='M16 6v4M16 14v4M16 22v4' stroke='%23e4e8f0' stroke-width='1.5'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true">
+          <rect x="0.5" y="0.5" width="33" height="33" rx="7" fill="#111b2e" stroke="#2c3e63"/>
+          <rect x="13" y="4" width="8" height="26" rx="1.5" fill="#0b1322" stroke="#f0b43c"/>
+          <path d="M17 7v4M17 15v4M17 23v4" stroke="#e4e8f0" stroke-width="1.6" stroke-linecap="round"/>
+          <path d="M5 24h8M21 10h8" stroke="#4ba3e3" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+        <div>
+          <div class="brand-name">Tarmac<span>OS</span></div>
+          <div class="brand-sub">Ground &amp; Gate Ops Control</div>
+        </div>
+      </div>
+
+      <div class="status-cluster">
+        <div class="clock" id="clock" title="Simulation time in ticks">T+0000</div>
+        <div class="status-item">
+          <span class="label">Scenario</span>
+          <span class="value" id="st-scenario">—</span>
+        </div>
+        <div class="status-item">
+          <span class="label">Run state</span>
+          <span class="value" id="st-run">—</span>
+        </div>
+        <span class="pill" id="engine-pill"><span class="dot"></span><span id="engine-text">Connecting…</span></span>
+      </div>
+
+      <div class="controls" role="toolbar" aria-label="Simulation controls">
+        <button class="btn primary" id="btn-run" title="Run continuously (auto-pauses when nothing can progress)">
+          <svg viewBox="0 0 16 16"><path d="M4 3l9 5-9 5z" fill="currentColor"/></svg>Run</button>
+        <button class="btn" id="btn-pause" title="Pause after the current tick">
+          <svg viewBox="0 0 16 16"><path d="M4 3h3v10H4zM9 3h3v10H9z" fill="currentColor"/></svg>Pause</button>
+        <button class="btn" id="btn-step" title="Advance exactly one tick">
+          <svg viewBox="0 0 16 16"><path d="M3 3l7 5-7 5zM11 3h2v10h-2z" fill="currentColor"/></svg>Step</button>
+        <button class="btn" id="btn-finish" title="Run with no delay until nothing can progress">
+          <svg viewBox="0 0 16 16"><path d="M2 3l6 5-6 5zM8 3l6 5-6 5z" fill="currentColor"/></svg>To end</button>
+        <select id="speed" title="Tick length while running" aria-label="Tick length">
+          <option value="1000">Slow · 1s</option>
+          <option value="500" selected>Normal · 0.5s</option>
+          <option value="200">Fast · 0.2s</option>
+        </select>
+        <span class="ctl-sep"></span>
+        <button class="btn danger" id="btn-reset" title="Stop every thread and return to the empty apron">
+          <svg viewBox="0 0 16 16"><path d="M3 8a5 5 0 1 0 1.5-3.6M3 2v3h3" stroke="currentColor" stroke-width="1.6" fill="none"/></svg>Reset</button>
+      </div>
+    </header>
+
+    <nav class="nav" id="nav" aria-label="Modules"></nav>
+    <main class="main" id="main"></main>
+
+    <aside class="rail" aria-label="Concept and event log">
+      <section class="concept" id="concept"></section>
+      <div class="log-head">
+        <span class="card-title">Event log</span>
+        <select id="log-filter" aria-label="Filter events" style="height:26px;font-size:12px">
+          <option value="all">All events</option>
+          <option value="cpu">Scheduling</option>
+          <option value="res">Resources</option>
+          <option value="dead">Deadlock</option>
+          <option value="mem">Memory</option>
+          <option value="disk">Baggage / IPC</option>
+        </select>
+      </div>
+      <div class="log" id="log" aria-live="polite"></div>
+    </aside>
+  </div>
+
+  <div class="toasts" id="toasts"></div>
+  <dialog id="confirm">
+    <h3 id="confirm-title">Are you sure?</h3>
+    <p id="confirm-text"></p>
+    <div class="row end">
+      <button class="btn ghost" value="cancel" id="confirm-cancel">Cancel</button>
+      <button class="btn primary" value="ok" id="confirm-ok">Confirm</button>
+    </div>
+  </dialog>
+
+  <script src="config.js"></script>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

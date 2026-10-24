@@ -1,0 +1,7 @@
+# Vercel only needs the dashboard and its build script; the engine and bridge run on the backend host.
+/*
+!/web
+!/scripts
+/scripts/*
+!/scripts/build_web.mjs
+!/vercel.json

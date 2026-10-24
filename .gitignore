@@ -1,0 +1,13 @@
+# build output
+engine/build/
+# python caches
+__pycache__/
+*.pyc
+# deployment output and local tooling
+dist/
+.vercel/
+.env
+.env.*
+!.env.example
+# tutorial video sources and audio cache (large, not part of the application)
+tutorial_video/

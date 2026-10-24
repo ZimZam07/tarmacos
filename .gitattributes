@@ -1,0 +1,2 @@
+# Keep LF everywhere: the scripts and engine are built and run on Linux.
+* text=auto eol=lf

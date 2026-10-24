@@ -1,0 +1,6 @@
+engine/build/
+**/__pycache__/
+*.pyc
+tutorial_video/
+dist/
+.vercel/

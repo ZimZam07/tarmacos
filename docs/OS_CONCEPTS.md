@@ -1,0 +1,25 @@
+# OS concept mapping
+
+Mapped to the Operating Systems Lab course (modules M1–M8, outcomes C371.1–C371.5).
+**REAL** = a genuine Linux/POSIX mechanism; **SIM** = a logical simulation computed by the engine.
+
+| Concept (lab module) | Where in the code | How to trigger | What to observe | Verified by | Kind |
+|---|---|---|---|---|---|
+| Process creation, `fork`, `wait` (M2) | `baggage_ipc.cpp: BaggageHandlerProcess::start/stop`, `main.cpp` | runs at engine start; `sys info`, Ops terminal `sys children` | the child's PID, and its PPID = engine PID | golden T-O1, T-O5 (no zombie, exit status 0), T-E4 (killed child reaped, "killed by signal 9") | REAL |
+| IPC with two unnamed pipes, `read`/`write`, closing unused ends (M2, Assignment 3 Q2/Q4) | `baggage_ipc.cpp: requestPlan`, `baggageChildMain` | any disk batch (Baggage & disk tab) | the `SCHED …` / `ORDER …` lines, the pipe fds, `sys fds` shows `pipe:[inode]` | T-O2 (exactly 2 shared pipes; the child holds no stdin/stdout), T-G9 | REAL |
+| Process lifecycle and states (M2) | `flight.h` (`OsState` separate from `Phase`), `simulation.cpp`, `resolve.cpp` | Flights tab | NEW → READY → RUNNING ⇄ BLOCKED → TERMINATED, with the airport phase shown separately | invariants checked every tick (T-G11) | SIM (states), REAL (thread per flight) |
+| pthread creation, arguments, join, return values (M3, Assignment 5) | `workers.cpp: startServices` (`pthread_create` with a struct pointer), `joinServices` (`pthread_join` collects a heap `ServiceResult`), `flightThreadMain` | any TURNAROUND / ARRIVAL / DEPARTURE flight | Threads & sync tab; `THREAD_JOINED` events with wait/work ticks; `sys threads` | T-O3 (thread count 3 → 6 → 3), T-G11 (8 joins) | REAL |
+| CPU scheduling FCFS / Priority / RR, Gantt, WT/TAT (M4, Assignment 4) | `algo/scheduling.cpp` (`CpuDispatcher`), used every tick by `simulation.cpp: dispatchCpu` | Scheduler tab references, Emergency | the Gantt chart is the engine's dispatch log; the metrics table | unit T-U1–5; golden T-G1/T-G2 (the live engine equals the hand calculation) | SIM |
+| Shared resources, blocking, wake-up (M4/M5) | `resources.*`, `resolve.cpp: grantPendingRequests/markWaiting` | Busy apron | Resources tab: owners, pending queue, reasons | invariants (one owner, consistent held lists, blocked ⇒ one pending request) | SIM table, REAL blocking (`pthread_cond_wait`) |
+| Mutex + condition variables (monitor style) (M5, Assignment 5 Q3/Q4/Q7) | `simulation.h` locking rules; every `while (...) pthread_cond_wait` in `workers.cpp` and `simulation.cpp` | always | thread states `cond_wait: …`; the kernel wchan `futex_do_wait` in `sys threads` | T-O4, determinism T-G10 | REAL |
+| Counting semaphores: producer-consumer bounded buffer (M5) | `baggage_buffer.cpp` (`sem_wait(empty)` / `sem_post(full)`), producer `workers.cpp: produceBags`, consumer `intakeLoop` | baggage services; `debug intake hold` to fill the buffer | Threads & sync: slot view, `empty`/`full` values | T-O6 (full = 4, empty = 0, a producer blocked in `sem_wait`, all 6 delivered after release) | REAL |
+| Binary semaphore (M5) | `baggage_ipc.cpp: channelLock` | every child exchange | one request/response on the pipe at a time | — (by construction) | REAL |
+| Deadlock prevention, resource ordering (M6) | `deadlock.cpp: violatesOrdering`, `resolve.cpp: refuseOutOfOrder` | Deadlocks → Prevention | `POLICY_REFUSED` at t8; C restarts in order; no cycle | T-G6 | SIM |
+| Deadlock avoidance, Banker's (M6) | `algo/banker.cpp`, `deadlock.cpp: checkWithBanker` | Deadlocks → Avoidance; BANKER-REF buttons | `UNSAFE_DEFERRED` at t2; the Last Banker's check panel; safety steps | unit T-U6 + A/B/C case; T-G7 | SIM |
+| Deadlock detection (M6) | `algo/detection.cpp`, `resolve.cpp: runDetectionAndRecovery` | Deadlocks → Detection | red cycle in the resource-allocation graph; flights stay BLOCKED | T-G3 (cycle {A,B,C} at t8, no recovery) | SIM (real threads stay blocked) |
+| Deadlock recovery (M6) | `resolve.cpp: recoverFrom` (preempt + rollback, or terminate) | Deadlocks → Recovery | `VICTIM_SELECTED`, `RECOVERED`, recovery log | T-G4 (13/18/21), T-G5 (12/15, C aborted) | SIM |
+| Paging, FIFO replacement, translation (M7) | `algo/paging.cpp`, `memory.cpp`, page touches in `resolve.cpp` | Memory tab presets, flights | frames, FIFO queue, hit/fault table, page tables, `mem xlate` | unit T-U9–12; golden T-G8 (15 faults; Belady 9 vs 10) | SIM |
+| Disk scheduling FCFS / SSTF / SCAN (M8) | `algo/disk.cpp`, computed **inside the child process**; `storage.cpp` moves the cart | Baggage & disk tab | service order, head-movement chart, totals | unit T-U13–20; T-G9 (the child's plan equals the parent's check equals the cart's measured movement) | SIM algorithm, REAL IPC |
+| Unix commands (M1) | `bridge/server.py: SYS_COMMANDS`, `scripts/*.sh` | Ops terminal; `./scripts/demo_deadlock.sh` | `ps -T`, `ps --ppid`, `ls -l /proc/PID/fd` against the real engine | bridge test 5 | REAL |
+
+Theory-course topics such as security, distributed systems and booting are not part of this lab project and are deliberately not simulated.

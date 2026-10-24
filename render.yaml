@@ -1,0 +1,19 @@
+# Render Blueprint for the TarmacOS backend (C++ engine + Python bridge).
+# Dashboard -> New -> Blueprint -> pick this repository. See docs/DEPLOYMENT.md.
+services:
+  - type: web
+    name: tarmacos-bridge
+    runtime: docker
+    plan: free
+    region: singapore
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      # Browser origins allowed to call the bridge (comma-separated, * wildcard allowed).
+      - key: TARMAC_ALLOWED_ORIGINS
+        value: https://tarmacos.vercel.app
+      - key: TARMAC_MAX_SESSIONS
+        value: "12"
+      - key: TARMAC_MAX_SESSIONS_PER_IP
+        value: "4"
