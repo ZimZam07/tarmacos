@@ -21,6 +21,11 @@ The project combines a **C++ engine running on Linux**, a Python bridge, and a b
 - **Disk Scheduling & IPC:** FCFS, SSTF, and SCAN, with a real child process planning the baggage cart's route over pipes.
 
 The dashboard displays state produced by the C++ engine rather than independently calculating the OS results.
+
+### 🎬 Watch TarmacOS in Action
+
+Watch the [TarmacOS project showcase on LinkedIn]((https://lnkd.in/p/gWET82aY)).
+
 ## Technology
 
 - **Engine:** C++17 on Linux/WSL2, built with `make`. It uses POSIX APIs directly (`fork`, `pipe`, `read`/`write`, `poll`, `waitpid`, `pthread_*`, `sem_*`). No third-party libraries, and no `std::thread`/`std::mutex`.
