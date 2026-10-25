@@ -1,22 +1,26 @@
-# TarmacOS: Airport Ground & Gate Operations Control
+# ✈️ TarmacOS — Airport Ground & Gate Operations Control
 
-TarmacOS is an Operating Systems Lab project: an interactive airport-apron simulation in which
-**flights are processes**, **ground services are POSIX threads**, **gates, fuel trucks and tugs
-are shared resources**, **the baggage cart is a disk head**, and **a real child process plans the
-cart's route over pipes**. Every value on the dashboard comes from a C++ engine running on Linux.
+**What if an airport ran like an operating system?**
 
-| Module | What you can do | OS concept |
-|---|---|---|
-| Overview | live apron map, KPIs, guided scenarios | the whole system in one state |
-| Flights | create flights, follow NEW → READY → RUNNING ⇄ BLOCKED → TERMINATED | process lifecycle |
-| Scheduler | FCFS, Priority (optional preemption), Round Robin; Gantt chart and WT/TAT | CPU scheduling |
-| Resources | who owns each gate/truck/tug, who is waiting and why | resource allocation, blocking |
-| Threads & sync | real Linux TIDs, mutex/condition variables, `sem_t` bounded buffer | pthreads, synchronisation |
-| Deadlocks | A/B/C circular wait under Prevention, Avoidance (Banker's), Detection, Recovery | deadlock handling |
-| Memory | FIFO demand paging, reference strings, page tables, address translation | memory management |
-| Baggage & disk | FCFS / SSTF / SCAN on belt positions 0–49, planned by a forked child | disk scheduling, IPC |
-| Ops terminal | engine commands plus real `ps -T`, `ps --ppid`, `/proc/PID/fd` | Linux commands |
+TarmacOS is an interactive airport-apron simulation that brings fundamental Operating Systems concepts to life. Aircraft behave as logical processes, ground services run as POSIX threads, and gates, fuel trucks, and tugs become shared resources that must be managed.
 
+The project combines a **C++ engine running on Linux**, a Python bridge, and a browser-based dashboard to demonstrate scheduling, concurrency, synchronization, deadlocks, memory management, disk scheduling, and inter-process communication.
+
+### 🚀 Explore TarmacOS
+
+🌐 **[Launch the Live Demo](https://tarmacos-kohl.vercel.app)**
+
+📖 [Architecture](docs/ARCHITECTURE.md) · [OS Concepts](docs/OS_CONCEPTS.md) · [Algorithms](docs/ALGORITHMS.md) · [Viva Preparation](docs/VIVA.md)
+
+### 🖥️ Project Highlights
+
+- **CPU Scheduling:** FCFS, Priority Scheduling, and Round Robin, with Gantt charts and waiting/turnaround metrics.
+- **Deadlock Management:** Prevention, Banker's Algorithm-based avoidance, detection, and recovery.
+- **Concurrency:** POSIX threads, mutexes, condition variables, semaphores, and shared-resource contention.
+- **Memory Management:** FIFO demand paging, page tables, and address translation.
+- **Disk Scheduling & IPC:** FCFS, SSTF, and SCAN, with a real child process planning the baggage cart's route over pipes.
+
+The dashboard displays state produced by the C++ engine rather than independently calculating the OS results.
 ## Technology
 
 - **Engine:** C++17 on Linux/WSL2, built with `make`. It uses POSIX APIs directly (`fork`, `pipe`, `read`/`write`, `poll`, `waitpid`, `pthread_*`, `sem_*`). No third-party libraries, and no `std::thread`/`std::mutex`.
