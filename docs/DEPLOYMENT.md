@@ -4,7 +4,7 @@
 |---|---|---|
 | **Dashboard** (share this) | https://tarmacos-kohl.vercel.app | Vercel, project `tarmacos` (team `zimran2`, Hobby) |
 | **Engine + bridge** | https://tarmacos-bridge.onrender.com | Render, service `tarmacos-bridge` (Free, Singapore) |
-| Source | https://github.com/ZimZam07/tarmacos (private) | GitHub |
+| Source | https://github.com/ZimZam07/tarmacos (public) | GitHub |
 
 ## Architecture
 
