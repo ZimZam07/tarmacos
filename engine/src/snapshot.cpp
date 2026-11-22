@@ -232,7 +232,11 @@ std::string Simulation::snapshotJson() {
         w.beginObject().field("name", std::string(serviceKindName(t->kind)) + " #" + std::to_string(t->taskId) +
                                           " for " + flightName(t->ownerSpid));
         w.field("kind", "service").field("tid", t->tid).field("state", state).field("spid", t->ownerSpid);
-        w.field("task_state", taskStateName(t->state)).endObject();
+        w.field("task_state", taskStateName(t->state));
+        // Presentation fields (read-only copies of the task record) so the UI can show service progress.
+        w.field("task", t->taskId).field("service", serviceKindName(t->kind)).field("work_left", t->workLeft);
+        w.field("bags_total", t->bagsTotal).field("bags_served", t->bagsServed).field("wait_ticks", t->waitTicks);
+        w.endObject();
     }
     w.endArray();
 
@@ -241,7 +245,10 @@ std::string Simulation::snapshotJson() {
     size_t first = recentEvents.size() > 60 ? recentEvents.size() - 60 : 0;
     for (size_t i = first; i < recentEvents.size(); i++) {
         const EventRecord& e = recentEvents[i];
-        w.beginObject().field("seq", e.seq).field("tick", e.tick).field("kind", e.kind).field("msg", e.message).endObject();
+        // "data" is the same structured payload the event carried on stdout (spid, resource, phase...),
+        // so the dashboard never has to parse the human-readable message.
+        w.beginObject().field("seq", e.seq).field("tick", e.tick).field("kind", e.kind).field("msg", e.message);
+        w.key("data").raw(e.dataJson.empty() ? "{}" : e.dataJson).endObject();
     }
     w.endArray();
 

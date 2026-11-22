@@ -171,6 +171,20 @@ def test_contention_and_determinism(engine):
           "RES_BLOCKED" in k and k.count("THREAD_JOINED") == 8 and k.count("DISK_REQ_SERVED") == 12,
           (k.count("RES_BLOCKED"), k.count("THREAD_JOINED"), k.count("DISK_REQ_SERVED")))
 
+    # Presentation contract used by the dashboard: snapshot events carry their structured data.
+    snap_events = s["events"]
+    check("T-G12 snapshot events carry structured data",
+          snap_events and all(isinstance(e.get("data"), dict) for e in snap_events) and
+          any(e["kind"] == "PHASE_CHANGED" and "spid" in e["data"] and "phase" in e["data"] for e in snap_events),
+          snap_events[-3:] if snap_events else None)
+    engine.ok("scenario contention")
+    engine.ok("sim run-until-quiet 16", timeout=60)
+    st = engine.state()
+    svc = [t for t in st["threads"] if t["kind"] == "service"]
+    check("T-G12 service threads expose task id, kind and progress",
+          svc and all({"task", "service", "work_left", "bags_total", "bags_served"} <= set(t) for t in svc)
+          and {t["service"] for t in svc} <= {"REFUEL", "BAGGAGE"}, svc[:2])
+
     def signature(scenario):
         st = run_scenario(engine, scenario, 400)
         out = []

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>TarmacOS promo film</title>
+<!-- 1080x1350 composition. Every frame is a pure function of time: window.render(t). -->
+<style>
+  @font-face { font-family: "Archivo"; src: url("../assets/fonts/Archivo.ttf") format("truetype"); font-weight: 100 900; font-stretch: 62% 125%; }
+  @font-face { font-family: "Inter Tight"; src: url("../assets/fonts/InterTight.ttf") format("truetype"); font-weight: 100 900; }
+  @font-face { font-family: "Inter"; src: url("../assets/fonts/Inter.ttf") format("truetype"); font-weight: 100 900; }
+  @font-face { font-family: "JetBrains Mono"; src: url("../assets/fonts/JetBrainsMono.ttf") format("truetype"); font-weight: 100 800; }
+
+  /* Tokens copied from web/css/app.css (TarmacOS dashboard). */
+  :root {
+    --bg: #0a111e; --bg-2: #0d1626; --panel: #111b2e; --panel-2: #152139; --line: #22314f; --line-2: #2c3e63;
+    --text: #e4e8f0; --text-2: #b4bdcf; --muted: #7d8aa3;
+    --amber: #f0b43c; --blue: #4ba3e3; --green: #3fc98c; --red: #ef6461;
+    --slam: "Archivo", sans-serif; --tight: "Inter Tight", sans-serif; --inter: "Inter", sans-serif; --mono: "JetBrains Mono", monospace;
+  }
+  html, body { margin: 0; width: 1080px; height: 1350px; overflow: hidden; background: var(--bg); }
+  #stage { position: relative; width: 1080px; height: 1350px; overflow: hidden; background: var(--bg); color: var(--text);
+           -webkit-font-smoothing: antialiased; }
+  .layer, .scene { position: absolute; inset: 0; }
+  .scene { visibility: hidden; }
+  #grid { background-image:
+            linear-gradient(rgba(75,163,227,.11) 1px, transparent 1px), linear-gradient(90deg, rgba(75,163,227,.11) 1px, transparent 1px),
+            linear-gradient(rgba(75,163,227,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(75,163,227,.05) 1px, transparent 1px);
+          background-size: 270px 270px, 270px 270px, 54px 54px, 54px 54px; inset: -300px; }
+  #vignette { background: radial-gradient(ellipse 75% 65% at 50% 48%, rgba(10,17,30,0) 0%, rgba(10,17,30,.55) 70%, rgba(6,10,18,.92) 100%); }
+  #grain { opacity: .05; mix-blend-mode: overlay; }
+  #fade { background: var(--bg); }
+  .abs { position: absolute; }
+  .words { position: absolute; font-family: var(--tight); letter-spacing: -0.02em; white-space: normal; }
+  .words .w { display: inline-block; white-space: pre; will-change: transform, opacity, filter; }
+  .slam { position: absolute; font-family: var(--slam); font-weight: 900; font-stretch: 112%; letter-spacing: -0.03em; line-height: .9; white-space: nowrap; }
+  .slam .ln { display: block; }
+  .slam .ch { display: inline-block; will-change: transform, opacity, filter; }
+  .mono { font-family: var(--mono); }
+  .kicker { position: absolute; font-family: var(--mono); font-weight: 600; font-size: 24px; letter-spacing: .18em; color: var(--amber); text-transform: uppercase; }
+  .micro { position: absolute; font-family: var(--mono); font-size: 20px; letter-spacing: .08em; color: var(--text-2); text-transform: uppercase; }
+  .shot { position: absolute; overflow: hidden; border-radius: 14px; background: var(--bg);
+          box-shadow: 0 40px 90px rgba(0,0,0,.6), 0 0 0 1px rgba(75,163,227,.20); }
+  .shot img { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+  svg { position: absolute; left: 0; top: 0; overflow: visible; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="grid" class="layer"></div>
+  <div id="vignette" class="layer"></div>
+  <div id="scenes" class="layer"></div>
+  <svg id="grain" class="layer" width="1080" height="1350"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" stitchTiles="stitch"/></filter><rect width="1080" height="1350" filter="url(#n)"/></svg>
+  <div id="hud" class="layer"></div>
+  <div id="fade" class="layer"></div>
+</div>
+<script>window.__errors = []; window.addEventListener("error", (e) => window.__errors.push(String(e.message) + " @" + e.lineno));</script>
+<script src="film.js"></script>
+</body>
+</html>

@@ -1,0 +1,249 @@
+[
+ {
+  "label": "health",
+  "health": {
+   "online": true,
+   "engine_pid": 9981,
+   "child_pid": 9983,
+   "error": ""
+  }
+ },
+ {
+  "label": "busy_t00",
+  "now": "Now (t=0): Waiting for work.",
+  "kpis": "FLIGHTS (PROCESSES)\n5 active\n0 ready \u00b7 0 running \u00b7 0 blocked \u00b7 0 done\nCPU\nidle\nRR q=4 \u00b7 ready queue 0\nRESOURCES IN USE\n0 / 5\n0 request(s) pending\nDEADLOCK\nnone\npolicy RECOVERY\nMEMORY FRAMES\n0 / 8\n0 faults \u00b7 hit ratio \u2014\nBAGGAGE QUEUE\n0 bags\nFCFS \u00b7 head 20 \u00b7 moved 0\nTHREADS\n8\nreal pthreads in the engine (incl. main, clock, intake)\nAVG WT / TAT\n\u2014\n0 completed flight(s)"
+ },
+ {
+  "label": "busy_t01",
+  "clock": "T+0001",
+  "now": "Now (t=1): AI101 holds the CPU.",
+  "map": "09\n27\n6E202\nINBOUND\nUK303\nINBOUND\nSG404\nINBOUND\nIX505\nINBOUND\nG1\nAI101\nAPPROACHING \u00b7 RUNNING\nG2\nG3\nG4 \u00b7 closed\nG5 \u00b7 closed\nG6 \u00b7 closed\nFUEL FT1\nfree\nTUG TG1\nfree\nGround-service vehicles\n0\n5\n10\n15\n20\n25\n30\n35\n40\n45\nCART\nBaggage belt \u00b7 positions 0\u201349 (disk cylinders)"
+ },
+ {
+  "label": "busy_t02",
+  "clock": "T+0002",
+  "now": "Now (t=2): AI101 holds the CPU.",
+  "map": "09\n27\n6E202\nREADY\nUK303\nINBOUND\nSG404\nINBOUND\nIX505\nINBOUND\nG1\nAI101\nLANDING \u00b7 RUNNING\nG2\nG3\nG4 \u00b7 closed\nG5 \u00b7 closed\nG6 \u00b7 closed\nFUEL FT1\nfree\nTUG TG1\nfree\nGround-service vehicles\n0\n5\n10\n15\n20\n25\n30\n35\n40\n45\nCART\nBaggage belt \u00b7 positions 0\u201349 (disk cylinders)"
+ },
+ {
+  "label": "busy_t03",
+  "clock": "T+0003",
+  "now": "Now (t=3): AI101 holds the CPU.",
+  "map": "09\n27\n6E202\nREADY\nUK303\nREADY\nSG404\nINBOUND\nIX505\nINBOUND\nG1\nAI101\nLANDING \u00b7 RUNNING\nG2\nG3\nG4 \u00b7 closed\nG5 \u00b7 closed\nG6 \u00b7 closed\nFUEL FT1\nfree\nTUG TG1\nfree\nGround-service vehicles\n0\n5\n10\n15\n20\n25\n30\n35\n40\n45\nCART\nBaggage belt \u00b7 positions 0\u201349 (disk cylinders)"
+ },
+ {
+  "label": "busy_t04",
+  "clock": "T+0004",
+  "now": "Now (t=4): AI101 holds the CPU.",
+  "map": "09\n27\n6E202\nREADY\nUK303\nREADY\nSG404\nREADY\nIX505\nINBOUND\nG1\nAI101\nTAXIING \u00b7 RUNNING\nG2\nG3\nG4 \u00b7 closed\nG5 \u00b7 closed\nG6 \u00b7 closed\nFUEL FT1\nfree\nTUG TG1\nfree\nGround-service vehicles\n0\n5\n10\n15\n20\n25\n30\n35\n40\n45\nCART\nBaggage belt \u00b7 positions 0\u201349 (disk cylinders)"
+ },
+ {
+  "label": "busy_t05",
+  "clock": "T+0005",
+  "now": "Now (t=5): 6E202 holds the CPU.",
+  "map": "09\n27\nUK303\nREADY\nSG404\nREADY\nIX505\nREADY\nG1\nAI101\nTAXIING \u00b7 READY\nG2\n6E202\nAPPROACHING \u00b7 RUNNING\nG3\nG4 \u00b7 closed\nG5 \u00b7 closed\nG6 \u00b7 closed\nFUEL FT1\nfree\nTUG TG1\nfree\nGround-service vehicles\n0\n5\n10\n15\n20\n25\n30\n35\n40\n45\nCART\nBaggage belt \u00b7 positions 0\u201349 (disk cylinders)"
+ },
+ {
+  "label": "busy_t06",
+  "clock": "T+0006",
+  "now": "Now (t=6): 6E202 holds the CPU.",
+  "map": "09\n27\nUK303\nREADY\nSG404\nREADY\nIX505\nREADY\nG1\nAI101\nTAXIING \u00b7 READY\nG2\n6E202\nLANDING \u00b7 RUNNING\nG3\nG4 \u00b7 closed\nG5 \u00b7 closed\nG6 \u00b7 closed\nFUEL FT1\nfree\nTUG TG1\nfree\nGround-service vehicles\n0\n5\n10\n15\n20\n25\n30\n35\n40\n45\nCART\nBaggage belt \u00b7 positions 0\u201349 (disk cylinders)"
+ },
+ {
+  "label": "busy_t07",
+  "clock": "T+0007",
+  "now": "Now (t=7): 6E202 holds the CPU.",
+  "map": "09\n27\nUK303\nREADY\nSG404\nREADY\nIX505\nREADY\nG1\nAI101\nTAXIING \u00b7 READY\nG2\n6E202\nLANDING \u00b7 RUNNING\nG3\nG4 \u00b7 closed\nG5 \u00b7 closed\nG6 \u00b7 closed\nFUEL FT1\nfree\nTUG TG1\nfree\nGround-service vehicles\n0\n5\n10\n15\n20\n25\n30\n35\n40\n45\nCART\nBaggage belt \u00b7 positions 0\u201349 (disk cylinders)"
+ },
+ {
+  "label": "busy_t08",
+  "clock": "T+0008",
+  "now": "Now (t=8): 6E202 holds the CPU.",
+  "map": "09\n27\nUK303\nREADY\nSG404\nREADY\nIX505\nREADY\nG1\nAI101\nTAXIING \u00b7 READY\nG2\n6E202\nTAXIING \u00b7 RUNNING\nG3\nG4 \u00b7 closed\nG5 \u00b7 closed\nG6 \u00b7 closed\nFUEL FT1\nfree\nTUG TG1\nfree\nGround-service vehicles\n0\n5\n10\n15\n20\n25\n30\n35\n40\n45\nCART\nBaggage belt \u00b7 positions 0\u201349 (disk cylinders)"
+ },
+ {
+  "label": "busy_t09",
+  "clock": "T+0009",
+  "now": "Now (t=9): UK303 holds the CPU.",
+  "map": "09\n27\nSG404\nREADY\nIX505\nREADY\nG1\nAI101\nTAXIING \u00b7 READY\nG2\n6E202\nTAXIING \u00b7 READY\nG3\nUK303\nAPPROACHING \u00b7 RUNNING\nG4 \u00b7 closed\nG5 \u00b7 closed\nG6 \u00b7 closed\nFUEL FT1\nfree\nTUG TG1\nfree\nGround-service vehicles\n0\n5\n10\n15\n20\n25\n30\n35\n40\n45\nCART\nBaggage belt \u00b7 positions 0\u201349 (disk cylinders)"
+ },
+ {
+  "label": "busy_t10",
+  "clock": "T+0010",
+  "now": "Now (t=10): UK303 holds the CPU.",
+  "map": "09\n27\nSG404\nREADY\nIX505\nREADY\nG1\nAI101\nTAXIING \u00b7 READY\nG2\n6E202\nTAXIING \u00b7 READY\nG3\nUK303\nLANDING \u00b7 RUNNING\nG4 \u00b7 closed\nG5 \u00b7 closed\nG6 \u00b7 closed\nFUEL FT1\nfree\nTUG TG1\nfree\nGround-service vehicles\n0\n5\n10\n15\n20\n25\n30\n35\n40\n45\nCART\nBaggage belt \u00b7 positions 0\u201349 (disk cylinders)"
+ },
+ {
+  "label": "busy_t11",
+  "clock": "T+0011",
+  "now": "Now (t=11): UK303 holds the CPU.",
+  "map": "09\n27\nSG404\nREADY\nIX505\nREADY\nG1\nAI101\nTAXIING \u00b7 READY\nG2\n6E202\nTAXIING \u00b7 READY\nG3\nUK303\nLANDING \u00b7 RUNNING\nG4 \u00b7 closed\nG5 \u00b7 closed\nG6 \u00b7 closed\nFUEL FT1\nfree\nTUG TG1\nfree\nGround-service vehicles\n0\n5\n10\n15\n20\n25\n30\n35\n40\n45\nCART\nBaggage belt \u00b7 positions 0\u201349 (disk cylinders)"
+ },
+ {
+  "label": "busy_t12",
+  "clock": "T+0012",
+  "now": "Now (t=12): UK303 holds the CPU.",
+  "map": "09\n27\nSG404\nREADY\nIX505\nREADY\nG1\nAI101\nTAXIING \u00b7 READY\nG2\n6E202\nTAXIING \u00b7 READY\nG3\nUK303\nTAXIING \u00b7 RUNNING\nG4 \u00b7 closed\nG5 \u00b7 closed\nG6 \u00b7 closed\nFUEL FT1\nfree\nTUG TG1\nfree\nGround-service vehicles\n0\n5\n10\n15\n20\n25\n30\n35\n40\n45\nCART\nBaggage belt \u00b7 positions 0\u201349 (disk cylinders)"
+ },
+ {
+  "label": "busy_t13",
+  "clock": "T+0013",
+  "now": "Now (t=13): 1 flight(s) blocked: SG404 (waiting: every GATE is in use).",
+  "map": "09\n27\nSG404\nBLOCKED\nIX505\nREADY\nG1\nAI101\nTAXIING \u00b7 READY\nG2\n6E202\nTAXIING \u00b7 READY\nG3\nUK303\nTAXIING \u00b7 READY\nG4 \u00b7 closed\nG5 \u00b7 closed\nG6 \u00b7 closed\nFUEL FT1\nfree\nTUG TG1\nfree\nGround-service vehicles\n0\n5\n10\n15\n20\n25\n30\n35\n40\n45\nCART\nBaggage belt \u00b7 positions 0\u201349 (disk cylinders)"
+ },
+ {
+  "label": "busy_t14",
+  "clock": "T+0014",
+  "now": "Now (t=14): 2 flight(s) blocked: SG404 (waiting: every GATE is in use); IX505 (waiting: every GATE is in use).",
+  "map": "09\n27\nSG404\nBLOCKED\nIX505\nBLOCKED\nG1\nAI101\nTAXIING \u00b7 READY\nG2\n6E202\nTAXIING \u00b7 READY\nG3\nUK303\nTAXIING \u00b7 READY\nG4 \u00b7 closed\nG5 \u00b7 closed\nG6 \u00b7 closed\nFUEL FT1\nfree\nTUG TG1\nfree\nGround-service vehicles\n0\n5\n10\n15\n20\n25\n30\n35\n40\n45\nCART\nBaggage belt \u00b7 positions 0\u201349 (disk cylinders)"
+ },
+ {
+  "label": "busy_t15",
+  "clock": "T+0015",
+  "now": "Now (t=15): 3 flight(s) blocked: AI101 (waiting for ground services); SG404 (waiting: every GATE is in use); IX505 (waiting: every GATE is in use).",
+  "map": "09\n27\nSG404\nBLOCKED\nIX505\nBLOCKED\nG1\nAI101\nTURNAROUND \u00b7 BLOCKED\nG2\n6E202\nTAXIING \u00b7 READY\nG3\nUK303\nTAXIING \u00b7 READY\nG4 \u00b7 closed\nG5 \u00b7 closed\nG6 \u00b7 closed\nFUEL FT1\nfree\nTUG TG1\nfree\nGround-service vehicles\n0\n5\n10\n15\n20\n25\n30\n35\n40\n45\nCART\nBaggage belt \u00b7 positions 0\u201349 (disk cylinders)"
+ },
+ {
+  "label": "busy_t16",
+  "clock": "T+0016",
+  "now": "Now (t=16): 4 flight(s) blocked: AI101 (waiting for ground services); 6E202 (waiting for ground services); SG404 (waiting: every GATE is in use); IX505 (waiting: every GATE is in use). The cart is serving a FCFS batch (4/48 positions moved).",
+  "map": "09\n27\nSG404\nBLOCKED\nIX505\nBLOCKED\nG1\nAI101\nTURNAROUND \u00b7 BLOCKED\nG2\n6E202\nTURNAROUND \u00b7 BLOCKED\nG3\nUK303\nTAXIING \u00b7 READY\nG4 \u00b7 closed\nG5 \u00b7 closed\nG6 \u00b7 closed\nFUEL FT1\nAI101\nTUG TG1\nfree\nGround-service vehicles\n0\n5\n10\n15\n20\n25\n30\n35\n40\n45\nCART\nBaggage belt \u00b7 positions 0\u201349 (disk cylinders)"
+ },
+ {
+  "label": "det_t01",
+  "clock": "T+0001",
+  "banner": "No deadlock\nPolicy DETECTION. Detection has run 0 time(s).",
+  "graph": "A\nRUNNING\nG3\nGate"
+ },
+ {
+  "label": "det_t02",
+  "clock": "T+0002",
+  "banner": "No deadlock\nPolicy DETECTION. Detection has run 0 time(s).",
+  "graph": "A\nREADY\nB\nRUNNING\nG3\nGate\nFT1\nTruck"
+ },
+ {
+  "label": "det_t03",
+  "clock": "T+0003",
+  "banner": "No deadlock\nPolicy DETECTION. Detection has run 0 time(s).",
+  "graph": "A\nREADY\nB\nREADY\nC\nRUNNING\nG3\nGate\nFT1\nTruck\nTG1\nTug"
+ },
+ {
+  "label": "det_t04",
+  "clock": "T+0004",
+  "banner": "No deadlock\nPolicy DETECTION. Detection has run 0 time(s).",
+  "graph": "A\nRUNNING\nB\nREADY\nC\nREADY\nG3\nGate\nFT1\nTruck\nTG1\nTug"
+ },
+ {
+  "label": "det_t05",
+  "clock": "T+0005",
+  "banner": "No deadlock\nPolicy DETECTION. Detection has run 0 time(s).",
+  "graph": "A\nREADY\nB\nRUNNING\nC\nREADY\nG3\nGate\nFT1\nTruck\nTG1\nTug"
+ },
+ {
+  "label": "det_t06",
+  "clock": "T+0006",
+  "banner": "No deadlock\nPolicy DETECTION. Detection has run 0 time(s).",
+  "graph": "A\nREADY\nB\nREADY\nC\nRUNNING\nG3\nGate\nFT1\nTruck\nTG1\nTug"
+ },
+ {
+  "label": "det_t07",
+  "clock": "T+0007",
+  "banner": "No deadlock\nPolicy DETECTION. Detection has run 1 time(s).",
+  "graph": "A\nBLOCKED\nFT1\nTruck\nB\nREADY\nC\nREADY\nG3\nGate\nTG1\nTug"
+ },
+ {
+  "label": "det_t08",
+  "clock": "T+0008",
+  "banner": "No deadlock\nPolicy DETECTION. Detection has run 2 time(s).",
+  "graph": "A\nBLOCKED\nFT1\nTruck\nB\nBLOCKED\nTG1\nTug\nC\nREADY\nG3\nGate"
+ },
+ {
+  "label": "det_t09",
+  "clock": "T+0009",
+  "banner": "Deadlock detected at t=8: A-AI301 \u2192 B-6E302 \u2192 C-UK303 \u2192 A-AI301\nAll four Coffman conditions hold. DETECTION only reports it: the flights stay blocked. Reset, or rerun the scenario under RECOVERY.",
+  "graph": "A\nBLOCKED\nFT1\nTruck\nB\nBLOCKED\nTG1\nTug\nC\nBLOCKED\nG3\nGate"
+ },
+ {
+  "label": "det_t10",
+  "clock": "T+0010",
+  "banner": "Deadlock detected at t=8: A-AI301 \u2192 B-6E302 \u2192 C-UK303 \u2192 A-AI301\nAll four Coffman conditions hold. DETECTION only reports it: the flights stay blocked. Reset, or rerun the scenario under RECOVERY.",
+  "graph": "A\nBLOCKED\nFT1\nTruck\nB\nBLOCKED\nTG1\nTug\nC\nBLOCKED\nG3\nGate"
+ },
+ {
+  "label": "rec_t08",
+  "clock": "T+0008",
+  "banner": "No deadlock\nPolicy RECOVERY. Detection has run 2 time(s).",
+  "rlog": "No recovery action yet."
+ },
+ {
+  "label": "rec_t09",
+  "clock": "T+0009",
+  "banner": "Recovered at t=8\nRecovery (PREEMPT): C-UK303 was rolled back to step 1 and lost TG1",
+  "rlog": "tick 8: C-UK303 was rolled back to step 1 and lost TG1"
+ },
+ {
+  "label": "rec_end",
+  "clock": "T+0021",
+  "banner": "Recovered at t=8\nRecovery (PREEMPT): C-UK303 was rolled back to step 1 and lost TG1",
+  "rlog": "tick 8: C-UK303 was rolled back to step 1 and lost TG1",
+  "events": "t20\nFLIGHT_TERMINATED\nC-UK303 completed (TAT 21, WT 9)\nt20\nPHASE_CHANGED\nC-UK303 is now DEPARTED\nt20\nRES_RELEASED\nC-UK303 released TG1\nt20\nRES_RELEASED\nC-UK303 released G3\nt20\nQUANTUM_EXPIRED\nC-UK303 used its 1-tick quantum and moved to the tail of the ready queue\nt19\nQUANTUM_EXPIRED\nC-UK303 used its 1-tick quantum and moved to the tail of the ready queue\nt18\nDISPATCHED\nRR dispatched C-UK303\nt17\nFLIGHT_READY\nC-UK303 was woken up and is READY again\nt17\nRES_GRANTED\nC-UK303 acquired G3\nt17\nFLIGHT_TERMINATED\nA-AI301 completed (TAT 18, WT 6)\nt17\nPHASE_CHANGED\nA-AI301 is now DEPARTED\nt17\nRES_RELEASED\nA-AI301 released FT1\nt17\nRES_RELEASED\nA-AI301 released G3\nt17\nDISPATCHED\nRR dispatched A-AI301\nt16\nRES_BLOCKED\nC-UK303 waiting: every GATE is in use\nt16\nRES_REQUESTED\nC-UK303 requested a GATE\nt16\nDISPATCHED\nRR dispatched C-UK303\nt16\nQUANTUM_EXPIRED\nA-AI301 used its 1-tick quantum and moved to the tail of the ready queue\nt15\nDISPATCHED\nRR dispatched A-AI301\nt15\nQUANTUM_EXPIRED\nC-UK303 used its 1-tick quantum and moved to the tail of the ready queue\nt14\nDISPATCHED\nRR dispatched C-UK303\nt14\nQUANTUM_EXPIRED\nA-AI301 used its 1-tick quantum and moved to the tail of the ready queue\nt13\nDISPATCHED\nRR dispatched A-AI301\nt12\nFLIGHT_READY\nC-UK303 was woken up and is READY again\nt12\nRES_GRANTED\nC-UK303 acquired TG1\nt12\nFLIGHT_READY\nA-AI301 was woken up and is READY again\nt12\nRES_GRANTED\nA-AI301 acquired FT1\nt12\nFLIGHT_TERMINATED\nB-6E302 completed (TAT 13, WT 6)\nt12\nPHASE_CHANGED\nB-6E302 is now DEPARTED\nt12\nRES_RELEASED\nB-6E302 released TG1\nt12\nRES_RELEASED\nB-6E302 released FT1\nt12\nQUANTUM_EXPIRED\nB-6E302 used its 1-tick quantum and moved to the tail of the ready queue\nt11\nDISPATCHED\nRR dispatched B-6E302\nt10\nRES_BLOCKED\nC-UK303 waiting: every TUG is in use\nt10\nRES_REQUESTED\nC-UK303 requested a TUG\nt10\nDISPATCHED\nRR dispatched C-UK303\nt10\nQUANTUM_EXPIRED\nB-6E302 used its 1-tick quantum and moved to the tail of the ready queue\nt9\nDISPATCHED\nRR dispatched B-6E302\nt8\nFLIGHT_READY\nB-6E302 was woken up and is READY again\nt8\nRES_GRANTED\nB-6E302 acquired TG1\nt8\nRECOVERED\nRecovery (PREEMPT): C-UK303 was rolled back to step 1 and lost TG1\nt8\nRES_RELEASED\nC-UK303 released TG1\nt8\nVICTIM_SELECTED\nC-UK303 chosen as victim (lowest priority 3, then youngest SPID)\nt8\nDEADLOCK_DETECTED\nDeadlock detected: A-AI301, B-6E302, C-UK303 are waiting on each other in a cycle\nt8\nRES_BLOCKED\nC-UK303 waiting: every GATE is in use\nt8\nRES_REQUESTED\nC-UK303 requested a GATE\nt8\nDISPATCHED\nRR dispatched C-UK303\nt7\nRES_BLOCKED\nB-6E302 waiting: every TUG is in use\nt7\nRES_REQUESTED\nB-6E302 requested a TUG\nt7\nDISPATCHED\nRR dispatched B-6E302\nt6\nRES_BLOCKED\nA-AI301 waiting: every FUEL_TRUCK is in use\nt6\nRES_REQUESTED\nA-AI301 requested a FUEL_TRUCK\nt6\nDISPATCHED\nRR dispatched A-AI301\nt6\nQUANTUM_EXPIRED\nC-UK303 used its 1-tick quantum and moved to the tail of the ready queue\nt5\nDISPATCHED\nRR dispatched C-UK303\nt5\nQUANTUM_EXPIRED\nB-6E302 used its 1-tick quantum and moved to the tail of the ready queue\nt4\nDISPA"
+ },
+ {
+  "label": "avoid_t01",
+  "clock": "T+0001",
+  "banner": "No deadlock\nPolicy AVOIDANCE. Detection has run 0 time(s).",
+  "banker": "A-AI301\n#1\nasked for a GATE at t=0\nGRANT\nthe resulting state is safe \u00b7 safe sequence A \u2192 B \u2192 C\nALLOCATION (BEFORE)\n\tGate\tTruck\tTug\nA\t0\t0\t0\nB\t0\t0\t0\nC\t0\t0\t0\nNEED (AFTER)\n\tGate\tTruck\tTug\nA\t0\t1\t0\nB\t0\t1\t1\nC\t1\t0\t1\nAVAILABLE AFTER\n\tGate\tTruck\tTug\nwork\t0\t1\t1",
+  "events": "t0\nRES_GRANTED\nA-AI301 acquired G3 (Banker's: state stays safe)\nt0\nPAGE_FAULT\nPage fault: A-AI301 page 1 (allocation record) loaded into frame 3\nt0\nRES_REQUESTED\nA-AI301 requested a GATE\nt0\nPHASE_CHANGED\nA-AI301 is now TURNAROUND\nt0\nDISPATCHED\nRR dispatched A-AI301\nt0\nFLIGHT_ADMITTED\nC-UK303 entered the ready queue\nt0\nFLIGHT_ADMITTED\nB-6E302 entered the ready queue\nt0\nFLIGHT_ADMITTED\nA-AI301 entered the ready queue\nt0\nSCENARIO_LOADED\nScenario loaded: deadlock AVOIDANCE\nt0\nFLIGHT_CREATED\nFlight C-UK303 created as SPID 3 (SCRIPTED, priority 3, burst 6)\nt0\nFLIGHT_CREATED\nFlight B-6E302 created as SPID 2 (SCRIPTED, priority 2, burst 6)\nt0\nFLIGHT_CREATED\nFlight A-AI301 created as SPID 1 (SCRIPTED, priority 2, burst 6)\nt0\nSIM_RESET\nSimulation reset (epoch 6)"
+ },
+ {
+  "label": "avoid_t02",
+  "clock": "T+0002",
+  "banner": "No deadlock\nPolicy AVOIDANCE. Detection has run 0 time(s).",
+  "banker": "B-6E302\n#2\nasked for a FUEL_TRUCK at t=1\nGRANT\nthe resulting state is safe \u00b7 safe sequence B \u2192 A \u2192 C\nALLOCATION (BEFORE)\n\tGate\tTruck\tTug\nA\t1\t0\t0\nB\t0\t0\t0\nC\t0\t0\t0\nNEED (AFTER)\n\tGate\tTruck\tTug\nA\t0\t1\t0\nB\t0\t0\t1\nC\t1\t0\t1\nAVAILABLE AFTER\n\tGate\tTruck\tTug\nwork\t0\t0\t1",
+  "events": "t1\nRES_GRANTED\nB-6E302 acquired FT1 (Banker's: state stays safe)\nt1\nPAGE_FAULT\nPage fault: B-6E302 page 1 (allocation record) loaded into frame 4\nt1\nRES_REQUESTED\nB-6E302 requested a FUEL_TRUCK\nt1\nPHASE_CHANGED\nB-6E302 is now TURNAROUND\nt1\nDISPATCHED\nRR dispatched B-6E302\nt1\nQUANTUM_EXPIRED\nA-AI301 used its 1-tick quantum and moved to the tail of the ready queue\nt0\nRES_GRANTED\nA-AI301 acquired G3 (Banker's: state stays safe)\nt0\nPAGE_FAULT\nPage fault: A-AI301 page 1 (allocation record) loaded into frame 3\nt0\nRES_REQUESTED\nA-AI301 requested a GATE\nt0\nPHASE_CHANGED\nA-AI301 is now TURNAROUND\nt0\nDISPATCHED\nRR dispatched A-AI301\nt0\nFLIGHT_ADMITTED\nC-UK303 entered the ready queue\nt0\nFLIGHT_ADMITTED\nB-6E302 entered the ready queue\nt0\nFLIGHT_ADMITTED\nA-AI301 entered the ready queue\nt0\nSCENARIO_LOADED\nScenario loaded: deadlock AVOIDANCE\nt0\nFLIGHT_CREATED\nFlight C-UK303 created as SPID 3 (SCRIPTED, priority 3, burst 6)\nt0\nFLIGHT_CREATED\nFlight B-6E302 created as SPID 2 (SCRIPTED, priority 2, burst 6)\nt0\nFLIGHT_CREATED\nFlight A-AI301 created as SPID 1 (SCRIPTED, priority 2, burst 6)\nt0\nSIM_RESET\nSimulation reset (epoch 6)"
+ },
+ {
+  "label": "avoid_t03",
+  "clock": "T+0003",
+  "banner": "Avoidance: C-UK303's TUG request is deferred\nGranting it would leave no safe sequence. An unsafe state is not yet a deadlock; Banker's simply never enters one.",
+  "banker": "C-UK303\n#3\nasked for a TUG at t=2\nUNSAFE\ngranting would leave no safe sequence, so the request is deferred\nALLOCATION (BEFORE)\n\tGate\tTruck\tTug\nA\t1\t0\t0\nB\t0\t1\t0\nC\t0\t0\t0\nNEED (AFTER)\n\tGate\tTruck\tTug\nA\t0\t1\t0\nB\t0\t0\t1\nC\t1\t0\t0\nAVAILABLE AFTER\n\tGate\tTruck\tTug\nwork\t0\t0\t0",
+  "events": "t2\nUNSAFE_DEFERRED\nC-UK303 deferred: granting a TUG would make the state UNSAFE (Banker's)\nt2\nPAGE_FAULT\nPage fault: C-UK303 page 1 (allocation record) loaded into frame 5\nt2\nRES_REQUESTED\nC-UK303 requested a TUG\nt2\nPHASE_CHANGED\nC-UK303 is now TURNAROUND\nt2\nDISPATCHED\nRR dispatched C-UK303\nt2\nQUANTUM_EXPIRED\nB-6E302 used its 1-tick quantum and moved to the tail of the ready queue\nt1\nRES_GRANTED\nB-6E302 acquired FT1 (Banker's: state stays safe)\nt1\nPAGE_FAULT\nPage fault: B-6E302 page 1 (allocation record) loaded into frame 4\nt1\nRES_REQUESTED\nB-6E302 requested a FUEL_TRUCK\nt1\nPHASE_CHANGED\nB-6E302 is now TURNAROUND\nt1\nDISPATCHED\nRR dispatched B-6E302\nt1\nQUANTUM_EXPIRED\nA-AI301 used its 1-tick quantum and moved to the tail of the ready queue\nt0\nRES_GRANTED\nA-AI301 acquired G3 (Banker's: state stays safe)\nt0\nPAGE_FAULT\nPage fault: A-AI301 page 1 (allocation record) loaded into frame 3\nt0\nRES_REQUESTED\nA-AI301 requested a GATE\nt0\nPHASE_CHANGED\nA-AI301 is now TURNAROUND\nt0\nDISPATCHED\nRR dispatched A-AI301\nt0\nFLIGHT_ADMITTED\nC-UK303 entered the ready queue\nt0\nFLIGHT_ADMITTED\nB-6E302 entered the ready queue\nt0\nFLIGHT_ADMITTED\nA-AI301 entered the ready queue\nt0\nSCENARIO_LOADED\nScenario loaded: deadlock AVOIDANCE\nt0\nFLIGHT_CREATED\nFlight C-UK303 created as SPID 3 (SCRIPTED, priority 3, burst 6)\nt0\nFLIGHT_CREATED\nFlight B-6E302 created as SPID 2 (SCRIPTED, priority 2, burst 6)\nt0\nFLIGHT_CREATED\nFlight A-AI301 created as SPID 1 (SCRIPTED, priority 2, burst 6)\nt0\nSIM_RESET\nSimulation rese"
+ },
+ {
+  "label": "avoid_end",
+  "clock": "T+0018",
+  "banner": "No deadlock\nPolicy AVOIDANCE. Detection has run 0 time(s).",
+  "events": "t17\nFLIGHT_TERMINATED\nC-UK303 completed (TAT 18, WT 3)\nt17\nPHASE_CHANGED\nC-UK303 is now DEPARTED\nt17\nRES_RELEASED\nC-UK303 released TG1\nt17\nRES_RELEASED\nC-UK303 released G3\nt17\nQUANTUM_EXPIRED\nC-UK303 used its 1-tick quantum and moved to the tail of the ready queue\nt16\nQUANTUM_EXPIRED\nC-UK303 used its 1-tick quantum and moved to the tail of the ready queue\nt15\nDISPATCHED\nRR dispatched C-UK303\nt14\nFLIGHT_READY\nC-UK303 was woken up and is READY again\nt14\nRES_GRANTED\nC-UK303 acquired G3 (Banker's: state stays safe)\nt14\nFLIGHT_TERMINATED\nA-AI301 completed (TAT 15, WT 5)\nt14\nPHASE_CHANGED\nA-AI301 is now DEPARTED\nt14\nRES_RELEASED\nA-AI301 released FT1\nt14\nRES_RELEASED\nA-AI301 released G3\nt14\nQUANTUM_EXPIRED\nA-AI301 used its 1-tick quantum and moved to the tail of the ready queue\nt13\nDISPATCHED\nRR dispatched A-AI301\nt12\nRES_BLOCKED\nC-UK303 waiting: every GATE is in use\nt12\nRES_REQUESTED\nC-UK303 requested a GATE\nt12\nDISPATCHED\nRR dispatched C-UK303\nt12\nQUANTUM_EXPIRED\nA-AI301 used its 1-tick quantum and moved to the tail of the ready queue\nt11\nDISPATCHED\nRR dispatched A-AI301\nt11\nQUANTUM_EXPIRED\nC-UK303 used its 1-tick quantum and moved to the tail of the ready queue\nt10\nDISPATCHED\nRR dispatched C-UK303\nt9\nFLIGHT_READY\nA-AI301 was woken up and is READY again\nt9\nRES_GRANTED\nA-AI301 acquired FT1 (Banker's: state stays safe)\nt9\nFLIGHT_READY\nC-UK303 was woken up and is READY again\nt9\nRES_GRANTED\nC-UK303 acquired TG1 (Banker's: state stays safe)\nt9\nFLIGHT_TERMINATED\nB-6E302 completed (TAT 10, WT 4)\nt9\nPHASE_CHANGED\nB-6E302 is now DEPARTED\nt9\nRES_RELEASED\nB-6E302 released TG1\nt9\nRES_RELEASED\nB-6E302 released FT1\nt9\nQUANTUM_EXPIRED\nB-6E302 used its 1-tick quantum and moved to the tail of the ready queue\nt8\nQUANTUM_EXPIRED\nB-6E302 used its 1-tick quantum and moved to the tail of the ready queue\nt7\nQUANTUM_EXPIRED\nB-6E302 used its 1-tick quantum and moved to the tail of the ready queue\nt6\nRES_BLOCKED\nC-UK303 waiting: every TUG is in use\nt6\nRES_GRANTED\nB-6E302 acquired TG1 (Banker's: state stays safe)\nt6\nRES_REQUESTED\nB-6E302 requested a TUG\nt6\nDISPATCHED\nRR dispatched B-6E302\nt5\nRES_BLOCKED\nA-AI301 waiting: every FUEL_TRUCK is in use\nt5\nRES_REQUESTED\nA-AI301 requested a FUEL_TRUCK\nt5\nDISPATCHED\nRR dispatched A-AI301\nt5\nQUANTUM_EXPIRED\nB-6E302 used its 1-tick quantum and moved to the tail of the ready queue\nt4\nDISPATCHED\nRR dispatched B-6E302\nt4\nQUANTUM_EXPIRED\nA-AI301 used its 1-tick quantum and moved to the tail of the ready queue\nt3\nDISPATCHED\nRR dispatched A-AI301\nt2\nUNSAFE_DEFERRED\nC-UK303 deferred: granting a TUG would make the state UNSAFE (Banker's)\nt2\nPAGE_FAULT\nPage fault: C-UK303 page 1 (allocation record) loaded into frame 5\nt2\nRES_REQUESTED\nC-UK303 requested a TUG\nt2\nPHASE_CHANGED\nC-UK303 is now TURNAROUND\nt2\nDISPATCHED\nRR dispatched C-UK303\nt2\nQUANTUM_EXPIRED\nB-6E302 used its 1-tick quantum and moved to the tail of the ready queue\nt1\nRES_GRANTED\nB-6E302 acquired FT1 (Banker's: state stays safe)\nt1\nPAGE_FAULT\nPage fault: B-6E302 page 1 (allocation recor"
+ },
+ {
+  "label": "rr_end",
+  "clock": "T+0019",
+  "avg": "Average over 4 completed flight(s)\t13.50\t8.75\t",
+  "metrics": "FLIGHT\tSPID\tARRIVAL\tBURST\tPRIORITY\tFIRST RUN\tCOMPLETION\tTURNAROUND\tWAITING\tRESPONSE\tBLOCKED\nP1\t1\t0\t6\t3\t0\t15\t15\t9\t0\t0\nP2\t2\t0\t3\t1\t4\t7\t7\t4\t4\t0\nP3\t3\t0\t8\t4\t7\t19\t19\t11\t7\t0\nP4\t4\t0\t2\t2\t11\t13\t13\t11\t11\t0\nAverage over 4 completed flight(s)\t13.50\t8.75\t"
+ },
+ {
+  "label": "scan_end",
+  "sum": "planned 75 \u00b7 moved 75 \u00b7 all-time 75 \u00b7 6 served",
+  "ipc": "Engine PID\n9981\nChild PID\n9983 RUNNING\nPipe fds\nwrite 4 \u2192 child \u00b7 read 5 \u2190 child\nExchanges\n2\nLAST REQUEST (PARENT \u2192 CHILD)\nSCHED SCAN UP 20 0 49 6 5 37 12 44 21 3\nLAST REPLY (CHILD \u2192 PARENT)\nORDER 6 21 37 44 12 5 3 PATH 8 20 21 37 44 49 12 5 3 MOVE 75 PID 9983",
+  "chart": "0\n5\n10\n15\n20\n25\n30\n35\n40\n45\nstart 20\n21\n37\n44\nedge 49\n12\n5\n3"
+ },
+ {
+  "label": "term_sys",
+  "out": "ops> sys children\n[REAL LINUX] $ ps -o pid,ppid,stat,etime,cmd --ppid 9981\n    PID    PPID STAT     ELAPSED CMD\n   9983    9981 S+         02:48 /mnt/c/Users/Zimran Ullah/Downloads/os_project/tarmacos/engine/build/tarmac_engine\nops> sys threads\n[REAL LINUX] $ ps -T -o spid,stat,wchan:22,comm -p 9981\n   SPID STAT WCHAN                  COMMAND\n   9981 Sl+  anon_pipe_read         tarmac_engine\n  10138 Sl+  futex_do_wait          tarmac_engine\n  10139 Sl+  futex_do_wait          tarmac_engine"
+ },
+ {
+  "label": "fcfs_end",
+  "clock": "T+0019",
+  "avg": "Average over 4 completed flight(s)\t12.75\t8.00\t"
+ },
+ {
+  "label": "prio_end",
+  "clock": "T+0019",
+  "avg": "Average over 4 completed flight(s)\t9.50\t4.75\t"
+ },
+ {
+  "label": "term_busy",
+  "clock": "T+0012",
+  "out": "ops> sys children\n[REAL LINUX] $ ps -o pid,ppid,stat,etime,cmd --ppid 9981\n    PID    PPID STAT     ELAPSED CMD\n   9983    9981 S+         05:31 /mnt/c/Users/Zimran Ullah/Downloads/os_project/tarmacos/engine/build/tarmac_engine\nops> sys threads\n[REAL LINUX] $ ps -T -o spid,stat,wchan:22,comm -p 9981\n   SPID STAT WCHAN                  COMMAND\n   9981 Sl+  anon_pipe_read         tarmac_engine\n  10254 Sl+  futex_do_wait          tarmac_engine\n  10255 Sl+  futex_do_wait          tarmac_engine\n  10256 Sl+  futex_do_wait          tarmac_engine\n  10257 Sl+  futex_do_wait          tarmac_engine\n  10258 Sl+  futex_do_wait          tarmac_engine\n  10259 Sl+  futex_do_wait          tarmac_engine\n  10260 Sl+  futex_do_wait          tarmac_engine"
+ }
+]

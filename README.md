@@ -30,7 +30,7 @@ Watch the [TarmacOS project showcase on LinkedIn]((https://lnkd.in/p/gWET82aY)).
 
 - **Engine:** C++17 on Linux/WSL2, built with `make`. It uses POSIX APIs directly (`fork`, `pipe`, `read`/`write`, `poll`, `waitpid`, `pthread_*`, `sem_*`). No third-party libraries, and no `std::thread`/`std::mutex`.
 - **Bridge:** Python 3 standard library only. It speaks HTTP and Server-Sent Events to the browser, and plain-text commands on the engine's stdin with JSON lines back on its stdout.
-- **Dashboard:** plain HTML/CSS/JavaScript ES modules, with no build step and no framework. It renders engine snapshots and computes no OS results itself.
+- **Dashboard:** plain HTML/CSS/JavaScript ES modules, with no build step and no framework, plus a vendored copy of [Three.js](https://threejs.org) r170 (MIT, `web/vendor/three/`) for the 3D airport. It renders engine snapshots and computes no OS results itself. See [docs/EXPERIENCE.md](docs/EXPERIENCE.md).
 
 See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for how the pieces fit together.
 
@@ -66,16 +66,25 @@ Then open **http://127.0.0.1:8080** in a browser. On Windows, use `127.0.0.1` ra
 - **Without a browser:** `./scripts/demo_deadlock.sh RECOVERY` drives the engine from the shell.
 - **By hand:** `printf 'scenario deadlock DETECTION\nsim run-until-quiet\nstate\nquit\n' | engine/build/tarmac_engine`
 
+## The experience
+
+- **Airport** (default): a 3D apron where every aircraft is a flight process. Aircraft fly the holding stack, land, taxi to the gate the engine granted, wait for real ground-service threads, push back with a real tug and take off. Gates, fuel trucks, tugs, the baggage cart (disk head) and BAGGAGE pthreads are all drawn from engine state. Click anything for details; keys `1`–`5` switch camera views, `Space` runs/pauses, `S` steps.
+- **Story Mode**: six chapters following flight AI101 through the *Busy apron* scenario, driven by real `sim step` commands; each chapter ends on a real engine event and can be replayed (the engine is deterministic).
+- **OS Explorer**: Processes, CPU Scheduling, Threads & Sync, Deadlocks, Memory, Disk Scheduling, and Linux & IPC (the Ops terminal).
+- **Analytics**: engine totals plus utilisation over the observed ticks.
+- **Settings**: Performance / Balanced / High 3D quality, reduced motion, labels, optional sound cues. Without WebGL the airport falls back to a 2D map.
+
 ## Demonstration in five minutes
 
-1. **Overview → "Three-way deadlock".** On the Deadlocks tab, press **Step** repeatedly. A, B and C take Gate 3, the truck and the tug (t0–t2), then block (t6–t8). At t8 the graph turns red: *deadlock detected*. Detection reports it and does nothing more.
-2. Select **Recovery** → **Load A/B/C scenario** → **Run to end**. Victim C is rolled back at t8, and the flights finish at t=13 (B), 18 (A) and 21 (C).
-3. Select **Avoidance**. At t2, C's tug request is *deferred* because Banker's finds no safe sequence, so no cycle ever forms. Then try **R1/R2/R3** in the Banker's safety-check example.
-4. **Scheduler → RR q=4 → To end.** Averages WT 8.75 / TAT 13.50, which match the hand calculation. Repeat with FCFS (8.00 / 12.75) and Priority (4.75 / 9.50).
+0. **Story** → **Start the story.** Six chapters follow AI101 from arrival to take-off on the real engine (about three minutes; use ▶| to skip ahead).
+1. **OS Explorer → Deadlocks → Detection → Load the deadlock demo → Step** repeatedly. Flights 1, 2 and 3 take Gate 3, the fuel truck and the tug (t0–t2), then block (t6–t8). At t8 the graph turns red: *deadlock detected*. Detection reports it and does nothing more.
+2. Select **Recovery** → **Load the deadlock demo** → **Run to end**. Flight 3 is rolled back at t8, and the flights finish at t=13 (Flight 2), 18 (Flight 1) and 21 (Flight 3). Open **Airport** to watch the same scenario in 3D.
+3. Select **Avoidance**. At t2, Flight 3's tug request is *deferred* because Banker's finds no safe sequence, so no cycle ever forms. Then try **R1/R2/R3** in the Banker's safety-check example.
+4. **CPU Scheduling → Reference RR q=4 → Run to end.** Averages WT 8.75 / TAT 13.50, which match the hand calculation. **Run all three on the engine** compares FCFS (8.00 / 12.75) and Priority (4.75 / 9.50).
 5. **Memory → Silberschatz · 3 frames**, then **Step**: watch FIFO evict the oldest page, ending with 15 faults.
-6. **Baggage & disk → SCAN ↑**. The child process (its real PID is shown) plans 21 → 37 → 44 → edge 49 → 12 → 5 → 3 = 75.
-7. **Overview → "Busy apron" → Run.** Five flights with refuel/baggage threads contend for 3 gates, 1 truck and 1 tug.
-8. **Ops terminal → `sys threads`, `sys children`, `sys fds`.** The kernel's view of the same threads, child process and pipes.
+6. **Disk Scheduling → SCAN ↑**. The child process (its real PID is shown) plans 21 → 37 → 44 → edge 49 → 12 → 5 → 3 = 75.
+7. **Scenarios → Busy apron → Run** on the Airport. Five flights with refuel/baggage threads contend for 3 gates, 1 truck and 1 tug; click a fuel truck to see which REFUEL pthread holds it and who waits.
+8. **Linux & IPC → `sys threads`, `sys children`, `sys fds`.** The kernel's view of the same threads, child process and pipes.
 
 ## Tests
 
@@ -84,7 +93,7 @@ Then open **http://127.0.0.1:8080** in a browser. On Windows, use `127.0.0.1` ra
 | Command | What it checks | Last result |
 |---|---|---|
 | `make -C engine test` | 31 unit tests: scheduling, Banker's, detection, FIFO, disk, protocol | 105 checks, 0 failures |
-| `make -C engine golden` | live engine: every reference case, the 4 deadlock policies, determinism (10 runs), real PIDs/pipes/threads, reset ×50, bounded buffer blocking, error codes, killed child | 74 checks, 0 failures |
+| `make -C engine golden` | live engine: every reference case, the 4 deadlock policies, determinism (10 runs), real PIDs/pipes/threads, reset ×50, bounded buffer blocking, error codes, killed child, snapshot event data | 76 checks, 0 failures |
 | `python3 -m unittest bridge/test_bridge.py` | HTTP API, SSE, sys commands, path traversal, engine offline + restart; public mode: per-session isolation, caps, CORS, idle clean-up | 13 tests OK |
 
 ## Limitations and provisional choices

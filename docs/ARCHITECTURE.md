@@ -3,9 +3,9 @@
 ```
  Browser (web/)                    Bridge (bridge/server.py)             Engine (engine/build/tarmac_engine)
  ┌──────────────────────┐  HTTP    ┌──────────────────────────┐  pipes  ┌──────────────────────────────────────┐
- │ 9 views render the   │ ───────► │ POST /api/cmd  -> line   │ ──────► │ main thread: read command from stdin │
- │ latest snapshot only │  POST    │ GET /api/stream (SSE)    │ stdin   │ clock thread: lockstep ticks         │
- │ (store.js)           │ ◄─────── │ POST /api/sys (ps, ls)   │ ◄────── │ 1 pthread per flight                 │
+ │ 3D airport, Explorer │ ───────► │ POST /api/cmd  -> line   │ ──────► │ main thread: read command from stdin │
+ │ render snapshots +   │  POST    │ GET /api/stream (SSE)    │ stdin   │ clock thread: lockstep ticks         │
+ │ event journal        │ ◄─────── │ POST /api/sys (ps, ls)   │ ◄────── │ 1 pthread per flight                 │
  └──────────────────────┘  SSE     │ serves web/ files        │ stdout  │ 1 pthread per ground service         │
                                    └──────────────────────────┘ (JSON)  │ intake thread (sem_t consumer)       │
                                                                         └──────────────┬───────────────────────┘
@@ -81,4 +81,4 @@ The threads really run in parallel and really block (`pthread_cond_wait`, `sem_w
   - `{"type":"resp","id":"7","ok":false,"error":{"code":"E_BAD_ARG","msg":"…"}}`
 - **Error codes:** `E_PARSE`, `E_UNKNOWN_CMD`, `E_BAD_ARG`, `E_UNKNOWN_FLIGHT`, `E_DUPLICATE_FLIGHT`, `E_FLIGHT_DONE`, `E_BUSY`, `E_STATE`, `E_LIMIT`, `E_IPC`, `E_INTERNAL`. The bridge adds `E_ENGINE_OFFLINE`, `E_TIMEOUT` and `E_BAD_REQUEST`, and in public mode `E_CAPACITY`, `E_SESSION_EXPIRED` and `E_RATE_LIMIT`.
 - **Events:** `{"type":"event","epoch":…,"seq":…,"tick":…,"kind":"RES_GRANTED","msg":"…","data":{…}}`
-- **Snapshots:** `{"type":"snapshot", "sim", "cpu", "flights", "resources", "pending", "deadlock", "memory", "disk", "sync", "ipc", "threads", "events"}`. The UI ignores snapshots older than the one it holds, using `epoch` and `version`.
+- **Snapshots:** `{"type":"snapshot", "sim", "cpu", "flights", "resources", "pending", "deadlock", "memory", "disk", "sync", "ipc", "threads", "events"}`. Each entry of `events` carries the event's structured `data`, and each service thread carries its task id, kind and progress (see [EXPERIENCE.md](EXPERIENCE.md)). The UI ignores snapshots older than the one it holds, using `epoch` and `version`.

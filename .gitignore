@@ -11,3 +11,5 @@ dist/
 !.env.example
 # tutorial video sources and audio cache (large, not part of the application)
 tutorial_video/
+# rendered promo film output (large media, regenerable from promo_film/scripts)
+promo_film/out/
